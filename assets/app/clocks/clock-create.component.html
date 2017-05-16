@@ -1,0 +1,51 @@
+<div class="backdrop"></div>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="onCancel()"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" *ngIf="!isEdit">Create a Clock</h4>
+            <h4 class="modal-title" *ngIf="isEdit">Edit the Clock</h4>
+        </div>
+        <form [formGroup]="myForm">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="timezone">Timezones</label>
+                <select class="form-control" 
+                    id="timezone" formControlName="timezone" 
+                    >
+                    <option 
+                        *ngFor="let timezone of timeZones" 
+                        [value]="timezone.timezone"> 
+                        {{timezone?.timezone}} - GMT( {{ timezone?.gmtOffset / 3600 }}  )
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea 
+                    rows="3"
+                    id="description" 
+                    class="form-control" 
+                    formControlName="description"></textarea>
+                <span 
+                    class="help-block" 
+                    *ngIf="!myForm.get('description').valid"
+                    > Description can not be empty, and should be 120 characters or less. <br>
+                    Only English letters, digits, spacebars & carriage returns are allowed.
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" 
+                class="btn btn-primary" 
+                (click)="onSave()"
+                [disabled]="!myForm.valid">Save</button>
+            <button type="button" 
+                class="btn btn-danger" 
+                (click)="onDelete()" 
+                *ngIf="isEdit">Delete</button>
+            <button type="button" class="btn btn-warning" (click)="onCancel()">Cancel</button>
+        </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+.idea
+/.ebextensions
+/node_modules
+npm-debug.log
+/public/js

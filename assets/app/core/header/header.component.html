@@ -1,0 +1,30 @@
+<header class="row">
+    <nav class="col-md-12">
+        <ul class="nav nav-pills">
+            <li>
+                <button type="button" class="btn btn-default"
+                [routerLink]="[{ outlets: { popup: ['create-clock']}}]"
+                queryParamsHandling = "preserve"
+                >Create</button>
+            </li>
+            <li class="dropdown" appDropDown>
+                <button type="button" class="btn btn-default dropdown-toggle" 
+                        data-toggle="dropdown">
+                        Sort By: <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li routerLinkActive="active">
+                        <a style="cursor: pointer;" 
+                            [routerLink]="['/clocks']"
+                            [queryParams]="{sort: 'timezone'}">Time Zone</a></li>
+                    <li routerLinkActive="active">
+                        <a style="cursor: pointer;" 
+                            [routerLink]="['/clocks']"
+                            [queryParams]="{sort: 'description'}">Description</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<!--, queryParamsHandling: 'preserve' -->

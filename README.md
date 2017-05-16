@@ -11,4 +11,4 @@ npm run build
 
 ## Production build
 
-npm run build:prod# worldclocks
+npm run build:prod
